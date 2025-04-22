@@ -19,7 +19,7 @@ low_importance_features = ['Region_North West', 'Region_Yorkshire and The Humber
 X_train_reduced = X_train.drop(columns=low_importance_features)
 X_test_reduced = X_test.drop(columns=low_importance_features)
 
-# Step 2: Train a Ridge Regression model with cross-validation
+# Step 2: Train a Ridge Regression model with cross-validation.
 ridge = Ridge(alpha=1.0)  # alpha controls regularization strength
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 cv_scores = cross_val_score(ridge, X_train_reduced, y_train, cv=kf, scoring='r2')
@@ -27,7 +27,7 @@ cv_scores = cross_val_score(ridge, X_train_reduced, y_train, cv=kf, scoring='r2'
 # Step 3: Fit the model on the full training data
 ridge.fit(X_train_reduced, y_train)
 
-# Step 4: Make predictions
+# Step 4: Making predictions
 y_train_pred = ridge.predict(X_train_reduced)
 y_test_pred = ridge.predict(X_test_reduced)
 
