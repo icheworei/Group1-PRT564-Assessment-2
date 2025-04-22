@@ -13,15 +13,15 @@ y_test = pd.read_csv('y_test.csv')
 y_train = y_train.values.ravel()
 y_test = y_test.values.ravel()
 
-# Step 1: Train a Linear Regression model
+# Step1: Train a Linear Regression model
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-# Step 2: Make predictions on the training and testing sets
+# Step2: Make predictions on the training and testing sets
 y_train_pred = model.predict(X_train)
 y_test_pred = model.predict(X_test)
 
-# Step 3: Evaluate the model
+# Step3: Evaluating the model
 train_mse = mean_squared_error(y_train, y_train_pred)
 test_mse = mean_squared_error(y_test, y_test_pred)
 train_r2 = r2_score(y_train, y_train_pred)
@@ -33,7 +33,7 @@ print("Testing MSE:", test_mse)
 print("Training R²:", train_r2)
 print("Testing R²:", test_r2)
 
-# Step 4: Display feature importance (coefficients)
+# Step4: Display feature importance (coefficients)
 feature_names = X_train.columns
 coefficients = pd.DataFrame(model.coef_, index=feature_names, columns=['Coefficient'])
 print("\nFeature Coefficients:")
